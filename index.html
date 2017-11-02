@@ -1,7 +1,57 @@
 <html>
-    <head>
-    </head>
-    <body>
-        <h1>"Hello World"</h1>
-    </body>
-    </html> 
+
+<head>
+</head>
+
+<body>
+    <h1>Garage</h1>
+
+    <h2>To add Car</h2>
+
+    <input type="text" id="name" placeholder="Name"></input>
+
+    <br>
+    <br>
+
+    <input type="text" id="model" placeholder="Model"></input>
+
+    <button onclick="addCar()">Add</button>
+
+    <!-- <div id="car">
+    </div>
+
+    <div id="array">
+    </div> -->
+
+    <script type="text/javascript">
+    let carArr = [];
+        function addCar(name, model) {
+            name = document.getElementById("name").value;
+            model = document.getElementById("model").value;
+            let car = { name: name, model: model };
+            carObjArray(car.name, car.model);
+            newCarDiv(car.name, car.model);
+            // document.getElementById("car").innerHTML = "<br>"+car.name+"<br>"+car.model+"<br>";
+        }
+
+        function carObjArray(name, model) {
+            if(carArr.length === 0){
+                carArr.push(name+model);
+            }else if(carArr.length > 0){
+                carArr.push(name+model);
+            }
+            console.log(carArr);
+            console.log(carArr.length);
+            // document.getElementById("array").innerHTML = "<br>" + carArr;
+        }
+
+        function newCarDiv(name, model) {
+           let x = document.createElement("div");
+           let d = document.createTextNode(name+" "+model);
+           x.appendChild(d);
+           document.body.appendChild(x);
+        }
+    </script>
+</body>
+
+</html>
