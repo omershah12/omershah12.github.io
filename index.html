@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <title>Garage</title>
 </head>
 
 <body>
@@ -15,41 +16,97 @@
 
     <input type="text" id="model" placeholder="Model"></input>
 
-    <button onclick="addCar()">Add</button>
+    <button onclick="addCar()">Add Car</button>
 
-    <!-- <div id="car">
+    <br>
+    <br>
+
+    <select id="faultSelect">
+        <option value="engine">Engine</option>
+        <option value="window">Window</option>
+    </select>
+    <button onclick="faultSet()">Add Fault</button>
+
+    <br>
+
+    <button onclick="displayGarage()">See all cars in Garage</button>
+
+    <div id="displayG">
     </div>
 
-    <div id="array">
-    </div> -->
+    <!-- <button onclick="faultList()">Add Fault</button> -->
 
     <script type="text/javascript">
-    let carArr = [];
-        function addCar(name, model) {
+        let carArr = [];
+        let faultUser = [];
+        function addCar(name, model, fault) {
             name = document.getElementById("name").value;
             model = document.getElementById("model").value;
-            let car = { name: name, model: model };
-            carObjArray(car.name, car.model);
-            newCarDiv(car.name, car.model);
-            // document.getElementById("car").innerHTML = "<br>"+car.name+"<br>"+car.model+"<br>";
+            // faultSet();
+            fault = faultUser;
+            let car = { name: name, model: model, fault: fault };
+            // faultList();
+            carObjArray(car.name, car.model, car.fault);
+            // newCarDiv(car.name, car.model, car.fault);
+            clearFaultArray();
         }
 
-        function carObjArray(name, model) {
-            if(carArr.length === 0){
-                carArr.push(name+model);
-            }else if(carArr.length > 0){
-                carArr.push(name+model);
-            }
+        function carObjArray(name, model, fault) {
+            carArr.push(name + "/" + model + "/" + fault);
             console.log(carArr);
             console.log(carArr.length);
-            // document.getElementById("array").innerHTML = "<br>" + carArr;
         }
 
-        function newCarDiv(name, model) {
-           let x = document.createElement("div");
-           let d = document.createTextNode(name+" "+model);
-           x.appendChild(d);
-           document.body.appendChild(x);
+        function displayGarage() {
+                // document.write(carArr[i] + '<br />');
+                document.getElementById("displayG").innerHTML= carArr.join("<br>");
+            
+        }
+        // function newCarDiv(name, model, fault) {
+        //     let x = document.createElement("div");
+        //     let d = document.createTextNode(name + " " + model + " " + fault);
+        //     x.appendChild(d);
+        //     document.body.appendChild(x);
+        // }
+
+        function clearFaultArray() {
+            faultUser = [];
+        }
+
+        function faultSet() {
+            let f = document.getElementById("faultSelect");
+            faultUser.push(f.options[f.selectedIndex].value);
+        }
+
+        // function faultList() {
+        //     let y = document.getElementById("fault");
+        //     if(y===null){
+        //     let select = document.createElement('select');
+        //     select.setAttribute("name", "fault");
+        //     select.setAttribute("id", "fault");
+        //     select.appendChild(new Option("Tyre", "tyre"));
+        //     select.appendChild(new Option("Window", "window"));
+        //     select.appendChild(new Option("Engine", "engine"));
+        //     document.body.appendChild(select);
+        //     getSelected(select);
+        //     }else{
+        //         document.getElementById("fault").remove();
+        //     }
+        // }
+
+        // function getSelected(select) {
+        //     faultUser = select.options[select.selectedIndex].text;
+        // }
+
+        Element.prototype.remove = function () {
+            this.parentElement.removeChild(this);
+        }
+        NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+            for (var i = this.length - 1; i >= 0; i--) {
+                if (this[i] && this[i].parentElement) {
+                    this[i].parentElement.removeChild(this[i]);
+                }
+            }
         }
     </script>
 </body>
