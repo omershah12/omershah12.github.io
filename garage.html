@@ -59,7 +59,7 @@
 
                         <h1>Garage</h1>
 
-                        <h2>To add Car</h2>
+                        <h2>Add Car to Garage</h2>
 
                         <input type="text" id="name" placeholder="Name"></input>
 
@@ -147,8 +147,10 @@
                             function newCarDiv(name, model, fault, registration, money) {
                                 let x = document.createElement("div");
                                 let d = document.createTextNode(name + " " + model + " " + fault + " " + registration + " £" + money);
+                                x.setAttribute("class", "jumbotron");
+                                // d.setAttribute("style", "center")
                                 x.appendChild(d);
-                                document.getElementById("output").appendChild(x);
+                                document.body.appendChild(x);
                             }
 
                             function clearFaultArray() {
@@ -229,12 +231,6 @@
             </div>
         </div>
     </div>
-    <div id="output" class="jumbotron">
-
-    </div>
-
-    <br>
-
 
 </body>
 
