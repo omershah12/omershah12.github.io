@@ -55,7 +55,7 @@
 
                 <div class="container">
                     <!--Jumbotron class-->
-                    <div class="jumbotron">
+                    <div id="jumbo" class="jumbotron">
 
                         <h1>Garage</h1>
 
@@ -80,9 +80,9 @@
                         <br>
 
                         <select id="faultSelect">
-        <option value="engine">Engine</option>
-        <option value="window">Window</option>
-    </select>
+                        <option value="engine">Engine</option>
+                        <option value="window">Window</option>
+                        </select>
 
                         <br>
                         <br>
@@ -148,7 +148,7 @@
                                 let x = document.createElement("div");
                                 let d = document.createTextNode(name + " " + model + " " + fault + " " + registration + " £" + money);
                                 x.appendChild(d);
-                                document.body.appendChild(x);
+                                document.getElementById("output").appendChild(x);
                             }
 
                             function clearFaultArray() {
@@ -179,8 +179,6 @@
                                 // }
 
                             }
-
-
 
                             // function removeCar(i) {
                             //     let d = document.getElementById(i).checked;
@@ -230,6 +228,9 @@
 
             </div>
         </div>
+    </div>
+    <div id="output" class="jumbotron">
+
     </div>
 
     <br>
