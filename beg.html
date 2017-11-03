@@ -1,0 +1,235 @@
+<html lang="en">
+
+<head>
+    <title>Beginner Tasks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="Style.css" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<!--Main Body of Page-->
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!--NavBar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                <!--User will be returned to home.php when clicked-->
+                <a class="navbar-brand">Projects</a>
+            </div>
+            <!--User will be shown languages when clicked-->
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Things.. <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="...">About Me</a></li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Wrapper used to hold all page content-->
+    <div class="wrapper">
+        <div class="container-fluid text-center">
+            <!--Bootstrap row-->
+            <div class="row content">
+                <!--Bootstrap column within row-->
+                <div class="col-sm-2 sidenav">
+
+                </div>
+                <br>
+
+                <!--Bootstrap column within row-->
+
+                <div class="container">
+                    <!--Jumbotron class-->
+                    <div class="jumbotron">
+                        <p id="output"></p>
+
+                        <button onclick="toUpper()">Change to Uppper Case</button>
+
+                        <button onclick="pop()">pop</button>
+                        <button onclick="push()">push</button>
+
+
+
+                        <script type="text/javascript">
+                            // window.alert("Hello World")
+
+                            // var string="Hello World";
+
+                            // window.alert(string);
+
+                            // console.log(string);
+
+                            // document.write(string);
+
+                            function square(n) {
+
+                                return n * n;
+
+                            }
+
+
+                            // document.getElementById("output").innerHTML
+                            //  = square(5);
+
+                            //  window.alert(square(5));
+
+                            //  console.log(square(5));
+
+                            //  document.write(square(5));
+
+                            function sum(a, b, c) {
+                                return a + b + c;
+                            }
+
+                            // document.getElementById("output").innerHTML=sum(1,2,3);
+
+
+
+                            function peopleFunction(name, age, occupation) {
+                                var it = {};
+                                it.name = name;
+                                it.age = age;
+                                it.occupation = occupation;
+                                return it;
+                            }
+
+                            // var person1= people("Omer", 22, 33);
+
+                            // document.getElementById("output").innerHTML= person1.name +" "+ person1.age+ " " +person1.occupation;
+
+                            // person1.name = "Bob";
+
+                            // window.alert(person1.name);
+
+                            function addOne() {
+                                window.alert(person1.age + 1);
+                            }
+
+                            var personTest;
+
+
+                            function form() {
+                                var x = document.forms["myForm"]["name"].value;
+                                var y = document.forms["myForm"]["age"].value;
+                                var z = document.forms["myForm"]["occupation"].value;
+                                // var person = peopleFunction(x,y,z);
+                                personTest = peopleFunction(x, y, z);
+                                peopleFunction.name = x;
+                                peopleFunction.age = y;
+                                peopleFunction.occupation = z;
+
+                                window.alert(personTest.name + " " + personTest.age + " " + personTest.occupation);
+                                if (personTest.age > 20 && personTest.age < 40) {
+                                    window.alert(true);
+                                } else {
+                                    window.alert(false);
+                                }
+                            }
+
+                            // function formEdit(){
+                            //        var x = document.forms["editForm"]["name1"].value;
+                            //     var y = document.forms["editForm"]["age1"].value;
+                            //     var z = document.forms["editForm"]["occupation1"].value;
+                            //     // var person = peopleFunction(x,y,z);
+                            //     personTest=peopleFunction(x,y,z);
+                            //     peopleFunction.name=x;
+                            //     peopleFunction.age=y;
+                            //     peopleFunction.occupation=z;
+
+                            //     window.alert(personTest.name +" "+ personTest.age +" "+ personTest.occupation);
+                            // }
+
+                            // var heSaid = "He said \"My name is Elliott\"";
+
+                            // document.getElementById("output").innerHTML=heSaid;
+
+                            // function toUpper(){
+                            //     var str = heSaid.toUpperCase();
+                            //     document.getElementById("output").innerHTML=str;
+                            // }
+
+                            // function con(){
+                            //     var conStr = "Hello";
+                            //     var conNum = "5";
+
+                            //     return conStr + conNum;
+                            // }
+
+                            // window.alert(con());
+
+                            var cars = ["Saab", "Volvo", "BMW"];
+                            document.getElementById("output").innerHTML = cars;
+
+
+
+                            function push() {
+                                cars.push("Merc");
+                                document.getElementById("output").innerHTML = cars;
+                            }
+
+                            function pop() {
+                                cars.pop();
+                                document.getElementById("output").innerHTML = cars;
+                            }
+
+
+                            var text = "";
+                            var i;
+
+                            for (i = 0; i < 11; i++) {
+                                if (i % 2 == 0) {
+                                    text += "Iteration " + i + "<br>";
+                                }
+                            }
+                            document.getElementById("output").innerHTML = text;
+
+                        </script>
+
+
+                        <br><br><br>
+                        <form name="myForm" onsubmit="return form()" method="post">
+                            Name:<input type="text" name="name"> Age: <input type="text" name="age"> Occupation <input type="text"
+                                name="occupation">
+                            <input type="submit" value="Submit">
+
+                            <form name="editForm" onsubmit="return formEdit()" method="post">
+                                Name:<input type="text" name="name1"> Age: <input type="text" name="age1"> Occupation
+                                <input
+                                    type="text" name="occupation1">
+                                    <input type="submit" value="Submit">
+
+                                    <input type="button" onclick="addOne()" value="Add one to age" />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <!--Footer Class-->
+            <footer class="container-fluid text-center">
+                <p>Copyright ©</p>
+            </footer>
+
+
+
+</body>
+
+</html>

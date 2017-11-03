@@ -1,0 +1,130 @@
+<html lang="en">
+
+<head>
+    <title>Beginner Tasks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="Style.css" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<!--Main Body of Page-->
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!--NavBar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                <!--User will be returned to home.php when clicked-->
+                <a class="navbar-brand">Projects</a>
+            </div>
+            <!--User will be shown languages when clicked-->
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Things.. <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="...">About Me</a></li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Wrapper used to hold all page content-->
+    <div class="wrapper">
+        <div class="container-fluid text-center">
+            <!--Bootstrap row-->
+            <div class="row content">
+                <!--Bootstrap column within row-->
+                <div class="col-sm-2 sidenav">
+
+                </div>
+                <br>
+
+                <!--Bootstrap column within row-->
+
+                <div class="container">
+                    <!--Jumbotron class-->
+                    <div class="jumbotron">
+                        <input type="text" id="text" placeholder="Search">
+
+                        <button onclick="getUser()">Search</button>
+
+                        <br>
+
+                        <p id="demo"></p>
+
+                        <script type="text/javascript">
+                            let xmlhttp = new XMLHttpRequest();
+                            let arrayCopy = [];
+                            let arrayInfo = [];
+
+                            xmlhttp.onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200) {
+
+                                    let myObj = JSON.parse(this.responseText);
+
+                                    for (let i = 0; i < myObj.length; i++) {
+                                        let member = myObj[i];
+                                        let memberNm = {};
+                                        let memberCty = {};
+                                        let memberHse = {};
+                                        let membersYrs = {};
+                                        memberNm = member.nm;
+                                        memberCty = member.cty;
+                                        memberHse = member.hse;
+                                        memberYrs = member.yrs;
+                                        arrayCopy.push(memberNm);
+                                        arrayInfo.push(memberNm + ", " + memberCty + ", " + memberHse + ", " + memberYrs);
+                                    }
+                                }
+                            };
+                            console.log(arrayCopy);
+                            xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", true);
+                            xmlhttp.send();
+
+                            function search(nameKey, myArray, myArray2) {
+                                for (let i = 0; i < myArray.length; i++) {
+
+                                    if (myArray[i].includes(nameKey)) {
+                                        console.log(arrayInfo[i]);
+                                        let x = document.createElement("div");
+                                        x.setAttribute("id", "div1");
+                                        let linebreak = document.createElement("br")
+                                        x.textContent = arrayInfo[i];
+                                        document.body.appendChild(x, linebreak, linebreak);
+                                    }
+                                }
+                            }
+
+                            function getUser() {
+                                let x = document.getElementById("text").value;
+                                let result = search(x, arrayCopy, arrayInfo);
+                            }
+                        </script>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+</body>
+
+</html>

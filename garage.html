@@ -1,0 +1,240 @@
+<html lang="en">
+
+<head>
+    <title>Beginner Tasks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="Style.css" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<!--Main Body of Page-->
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!--NavBar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                <!--User will be returned to home.php when clicked-->
+                <a class="navbar-brand">Projects</a>
+            </div>
+            <!--User will be shown languages when clicked-->
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Things.. <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="...">About Me</a></li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Wrapper used to hold all page content-->
+    <div class="wrapper">
+        <div class="container-fluid text-center">
+            <!--Bootstrap row-->
+            <div class="row content">
+                <!--Bootstrap column within row-->
+                <div class="col-sm-2 sidenav">
+
+                </div>
+                <br>
+
+                <!--Bootstrap column within row-->
+
+                <div class="container">
+                    <!--Jumbotron class-->
+                    <div class="jumbotron">
+
+                        <h1>Garage</h1>
+
+                        <h2>To add Car</h2>
+
+                        <input type="text" id="name" placeholder="Name"></input>
+
+                        <br>
+                        <br>
+
+                        <input type="text" id="model" placeholder="Model"></input>
+
+                        <br>
+                        <br>
+
+                        <input type="text" id="registration" placeholder="Registration Number"></input>
+                        <br>
+
+                        <button onclick="addCar()">Add Car</button>
+
+                        <br>
+                        <br>
+
+                        <select id="faultSelect">
+        <option value="engine">Engine</option>
+        <option value="window">Window</option>
+    </select>
+
+                        <br>
+                        <br>
+
+                        <button onclick="faultSet()">Add Fault</button>
+
+                        <br>
+                        <br>
+
+                        <button onclick="displayGarage()">See all cars in Garage</button>
+                        <br>
+                        <br>
+                        <button onclick="displayRemoveCar()">To remove Car</button>
+                        <!-- <button onclick="finalDelete()">TO DELETE</button> -->
+
+                        <div id="displayG">
+                        </div>
+
+                        <div id="div">
+                        </div>
+
+                        <!-- <button onclick="faultList()">Add Fault</button> -->
+
+                        <script type="text/javascript">
+                            let carArr = [];
+                            let faultUser = [];
+
+                            function addCar(name, model, fault, registration) {
+                                name = document.getElementById("name").value;
+                                model = document.getElementById("model").value;
+                                registration = document.getElementById("registration").value;
+                                // faultSet();
+                                fault = faultUser;
+                                let money = 0;
+                                let car = { name: name, model: model, fault: fault, registration: registration, money: money };
+                                // faultList();
+
+                                carObjArray(car.name, car.model, car.fault, car.registration, car.money);
+                                clearFaultArray();
+                            }
+
+                            function carObjArray(name, model, fault, registration, money) {
+                                if (fault.length > 1) {
+                                    money = 100;
+                                } else {
+                                    money = 50;
+                                }
+                                carArr.push(name + "/" + model + "/" + fault + "/" + registration + "/" + money);
+                                console.log(carArr);
+                                console.log(carArr.length);
+                                newCarDiv(name, model, fault, registration, money);
+                            }
+
+                            function displayGarage() {
+                                // document.write(carArr[i] + '<br />');
+                                if (carArr.length > 0) {
+                                    document.getElementById("displayG").innerHTML = carArr.join("<br>");
+                                } else {
+                                    alert("The garage is currently empty");
+                                }
+                            }
+                            function newCarDiv(name, model, fault, registration, money) {
+                                let x = document.createElement("div");
+                                let d = document.createTextNode(name + " " + model + " " + fault + " " + registration + " £" + money);
+                                x.appendChild(d);
+                                document.body.appendChild(x);
+                            }
+
+                            function clearFaultArray() {
+                                faultUser = [];
+                            }
+
+                            function faultSet() {
+                                let f = document.getElementById("faultSelect");
+                                faultUser.push(f.options[f.selectedIndex].value);
+                            }
+
+                            function displayRemoveCar(name) {
+                                // let id;
+                                // for (let i = 0; i < carArr.length; i++) {
+                                //     let label = document.createElement("label");
+                                //     let radio = document.createElement("input");
+                                //     radio.setAttribute("id", "i");
+                                //     radio.type = "radio";
+                                //     radio.name = carArr[i];
+                                //     radio.value = carArr[i];
+                                //     label.appendChild(radio);
+                                //     label.appendChild(document.createTextNode(carArr[i]));
+                                //     document.body.appendChild(label);
+                                //     d = document.getElementById(i).checked;
+                                //     if (d === true) {
+                                //         finalDelete(i);
+                                //     }
+                                // }
+
+                            }
+
+
+
+                            // function removeCar(i) {
+                            //     let d = document.getElementById(i).checked;
+                            //     if (d == true) {
+                            //         finalDelete(i);
+                            //     }
+                            // }
+
+                            function finalDelete(i) {
+                                carArr.splice(i, 1);
+                                console.log(carArr);
+                            }
+        // function faultList() {
+        //     let y = document.getElementById("fault");
+        //     if(y===null){
+        //     let select = document.createElement('select');
+        //     select.setAttribute("name", "fault");
+        //     select.setAttribute("id", "fault");
+        //     select.appendChild(new Option("Tyre", "tyre"));
+        //     select.appendChild(new Option("Window", "window"));
+        //     select.appendChild(new Option("Engine", "engine"));
+        //     document.body.appendChild(select);
+        //     getSelected(select);
+        //     }else{
+        //         document.getElementById("fault").remove();
+        //     }
+        // }
+
+        // function getSelected(select) {
+        //     faultUser = select.options[select.selectedIndex].text;
+        // }
+
+        // Element.prototype.remove = function () {
+        //     this.parentElement.removeChild(this);
+        // }
+        // NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+        //     for (var i = this.length - 1; i >= 0; i--) {
+        //         if (this[i] && this[i].parentElement) {
+        //             this[i].parentElement.removeChild(this[i]);
+        //         }
+        //     }
+        // }
+                        </script>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+</body>
+
+</html>

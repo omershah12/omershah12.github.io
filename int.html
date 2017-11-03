@@ -1,0 +1,141 @@
+<html lang="en">
+
+<head>
+    <title>Beginner Tasks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="Style.css" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<!--Main Body of Page-->
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!--NavBar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                <!--User will be returned to home.php when clicked-->
+                <a class="navbar-brand">Projects</a>
+            </div>
+            <!--User will be shown languages when clicked-->
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Things.. <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="...">About Me</a></li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Wrapper used to hold all page content-->
+    <div class="wrapper">
+        <div class="container-fluid text-center">
+            <!--Bootstrap row-->
+            <div class="row content">
+                <!--Bootstrap column within row-->
+                <div class="col-sm-2 sidenav">
+
+                </div>
+                <br>
+
+                <!--Bootstrap column within row-->
+
+                <div class="container">
+                    <!--Jumbotron class-->
+                    <div class="jumbotron">
+                        <p id="output"></p>
+
+                        <button onclick="createParagraph()"> Click here</button>
+
+                        <input type="text" id="myText" value="">
+
+                        <button onclick="changeParagraph()"> Change here</button>
+
+                        <button onclick="deleteParagraph()"> Delete here</button>
+
+                        <script type="text/javascript">
+                            function iteration(x) {
+                                let text = "";
+                                let i = 0;
+                                do {
+                                    if (x % 3 == 0) {
+                                        i++;
+                                        text += "divisible" + i;
+                                    } else if ((x - 1) % 3 == 0) {
+                                        text += "x-1 divisible";
+                                        i++;
+                                    } else if ((x + 1) % 3 == 0) {
+                                        text += "x+1 divisible";
+                                        i++;
+                                    } else if (x == 0) {
+                                        text += "Stopped";
+                                        i++;
+                                    }
+                                } while (i = 0)
+                                return text;
+                            }
+                            document.getElementById("output").innerHTML = iteration(3);
+
+                            function getFrequency(string) {
+                                var freq = {};
+                                for (var i = 0; i < string.length; i++) {
+                                    var character = string.charAt(i);
+                                    if (freq[character]) {
+                                        freq[character]++;
+                                    } else {
+                                        freq[character] = 1;
+                                    }
+                                    var myJSON = JSON.stringify(freq);
+                                }
+                                return myJSON;
+                            };
+
+                            document.getElementById("output").innerHTML = getFrequency("abcXXXabc");
+                            let para = "Hello World, this is my first paragraph. Blah blah blah blah blah blah";
+                            function createParagraph() {
+                                document.getElementById("output").innerHTML = para;
+                            }
+
+                            function changeParagraph() {
+                                let newPara = document.getElementById("myText").value;
+                                para = newPara;
+                                document.getElementById("output").innerHTML = para;
+                            }
+
+                            function deleteParagraph() {
+                                para = "";
+                                document.getElementById("output").innerHTML = para;
+                            }
+                        </script>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!--Footer Class-->
+    <footer class="container-fluid text-center">
+        <p>Copyright ©</p>
+    </footer>
+
+</body>
+
+</html>
